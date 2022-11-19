@@ -50,6 +50,14 @@ public class Rocket implements GameControlScene {
 	 * constructor.
 	 */
 
+	public Rocket() {
+		x = AsteroidsGame.WIDTH / 2;
+		y = AsteroidsGame.HEIGHT /2;
+		size =10;
+		collisionBox = new Rectangle(x -size /2, y - size /2, size, size);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void draw(Graphics g) {
 		Graphics2D graphics2D = (Graphics2D) g;
@@ -116,7 +124,6 @@ public class Rocket implements GameControlScene {
 		}
 	}
 
-	@Override
 	public void keyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_D:
