@@ -12,7 +12,7 @@ public class Planet {
     int x, y, width, height;
     int diameter;
     
-    public Planet(int diameterPixels) {
+    public Planet(int diameterPixels, Color orange, int i, double d) {
         this.diameter = diameterPixels;
     }
 
