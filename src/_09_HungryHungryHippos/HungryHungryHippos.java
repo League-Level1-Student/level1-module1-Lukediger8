@@ -9,10 +9,6 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
-import game_tools.Game;
-import game_tools.GameControlScene;
-import game_tools.GameScene;
-
 /*
  * Background:
  * Hungry Hungry Hippos is a tabletop game made for 2-4 players.
@@ -41,7 +37,7 @@ import game_tools.GameScene;
  *    c. Check if each hippo is eating if the game has started.
  *    d. Make your hippos eat when a key is pressed.
  */
-public class HungryHungryHippos implements GameScene, GameControlScene {
+public class HungryHungryHippos<gameFrame, gameFrame> implements GameScene, GameControlScene {
     static final int GAME_WIDTH = 800;
     static final int GAME_HEIGHT = 800;
     static final int GAME_BOARD_WIDTH = (2 * GAME_WIDTH) / 3;
@@ -61,9 +57,12 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
      * Create your hippo objects here. The "left" input parameter indicates
      * which side the hippo is drawn.
      */
-    Hippo myHippoObject = new Hippo("left");
+    Hippo myHippoMyles = new Hippo("left","Myles Hippo",Color.orange);
+    Hippo myHippoJames = new Hippo("right","James Hippo",Color.red);
+    Hippo myHippoLukerson = new Hippo("up","Lukerson Hippo",Color.green);
+    Hippo myHippoMaverick = new Hippo("down","Maverick Hippo",Color.yellow);
 
-    public HungryHungryHippos() {
+    public <gameFrame> HungryHungryHippos() {
         gameFrame.setScene(this);
         gameFrame.start();
         gameFrame.setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -74,7 +73,6 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         JOptionPane.showMessageDialog(null, instructions);
     }
 
-    @Override
     public void draw(Graphics g) {
         /*
          * Background
@@ -96,7 +94,10 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         /*
          * Draw all the hippos here
          */
-        myHippoObject.draw(g);
+        myHippoMyles.draw(g);
+        myHippoJames.draw(g);
+        myHippoLukerson.draw(g);
+        myHippoMaverick.draw(g);
         
         if (startGame) {
             /*
@@ -109,11 +110,14 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
              * checkHippoEating(myHippoObject) method. Make sure to do
              * this for all of your hippos!
              */
-            checkHippoEating(myHippoObject);
+            checkHippoEating(myHippoMyles);
+            checkHippoEating(myHippoJames);
+            checkHippoEating(myHippoLukerson);
+            checkHippoEating(myHippoMaverick);
+            
         }
     }
 
-    @Override
     public void keyPressed(KeyEvent event) {
         int keyCode = event.getKeyCode();
 
@@ -123,13 +127,13 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         if (keyCode == KeyEvent.VK_S) {
             startGame = true;
         } else if (keyCode == KeyEvent.VK_1) {
-            myHippoObject.eat();
+            myHippoMyles.eat();
         } else if (keyCode == KeyEvent.VK_2) {
-            
+            myHippoJames.eat();
         } else if (keyCode == KeyEvent.VK_3) {
-            
+            myHippoLukerson.eat();
         } else if (keyCode == KeyEvent.VK_4) {
-            
+            myHippoMaverick.eat();
         }
     }
     
